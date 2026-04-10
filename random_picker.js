@@ -1,1 +1,17 @@
-document.addEventListener('DOMContentLoaded', function () { // Set your min and max here const min = 1; const max = 5; // REDCap input id pattern is usually "fieldname" const field = document.querySelector('input[name="random_pick"]'); if (!field) { console.log('random_pick field not found'); return; } // Only assign if blank, so refreshes do not overwrite existing values if (field.value === '') { const randomValue = Math.floor(Math.random() * (max - min + 1)) + min; field.value = randomValue; // Trigger change/input so REDCap notices the update field.dispatchEvent(new Event('input', { bubbles: true })); field.dispatchEvent(new Event('change', { bubbles: true })); console.log('random_pick set to:', randomValue); } });
+document.addEventListener('DOMContentLoaded', function () { 
+	
+	// Set your min and max here 
+	const min = 1; 
+	const max = 5; 
+	
+	// REDCap input id pattern is usually "fieldname" 
+	const field = document.querySelector('input[name="random_pick"]'); 
+	if (!field) { console.log('random_pick field not found'); return; } 
+	
+	// Only assign if blank, so refreshes do not overwrite existing values 
+	if (field.value === '') { const randomValue = Math.floor(Math.random() * (max - min + 1)) + min; field.value = randomValue; 
+													
+	// Trigger change/input so REDCap notices the update 
+	field.dispatchEvent(new Event('input', { bubbles: true })); 
+  field.dispatchEvent(new Event('change', { bubbles: true })); 
+  console.log('random_pick set to:', randomValue); } });
